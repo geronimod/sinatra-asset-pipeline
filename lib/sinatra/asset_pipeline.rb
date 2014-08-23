@@ -13,6 +13,8 @@ module Sinatra
       app.set_default :assets_css_compressor, nil
       app.set_default :assets_js_compressor, nil
       app.set_default :assets_host, nil
+      app.set_default :assets_host, nil
+      app.set_default :debug, false
 
       app.set :static, true
       app.set :assets_digest, true
@@ -27,6 +29,7 @@ module Sinatra
         Sprockets::Helpers.configure do |config|
           config.environment = app.sprockets
           config.digest = app.assets_digest
+          config.debug  = app.debug
         end
       end
 
